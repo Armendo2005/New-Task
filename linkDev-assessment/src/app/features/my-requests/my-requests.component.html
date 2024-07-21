@@ -1,1 +1,42 @@
-<p>my-requests works!</p>
+<div>
+  <form [formGroup]="filterForm" (ngSubmit)="onFilter()">
+    <label>
+      Request Number:
+      <input formControlName="requestNumber" type="text">
+    </label>
+    <label>
+      Request Status:
+      <select formControlName="requestStatus">        
+        <option *ngFor="let status of statuses" [value]="status.statusName">{{status.statusName}}</option>
+      </select>
+    </label>
+    <label>
+      Submission Date From:
+      <input formControlName="submissionDateFrom" type="date">
+    </label>
+    <label>
+      Submission Date To:
+      <input formControlName="submissionDateTo" type="date">
+    </label>
+    <button type="submit">Filter</button>
+    <button (click)="clearFilter()">Clear Filters</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Request Number</th>
+        <th>Request Status</th>
+        <th>Submission Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of filteredRequests | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
+        <td>{{ request.requestNumber }}</td>
+        <td>{{ getStatusName(request.requestStatus) }}</td>
+        <td>{{ request.requestSubmissionDate | dateOnly}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
