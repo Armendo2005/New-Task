@@ -1,1 +1,11 @@
-<p>event-details works!</p>
+<div *ngIf="event">
+  <h1>{{ event.title }}</h1>
+  <div>{{ event.start }}</div>
+  <div>{{ event.end }}</div>
+  <div>{{ event.location }}</div>
+  <img [src]="event.image" alt="{{ event.title }}" />
+  <div>{{ event.categoryName }}</div>
+  <div>{{ event.description }}</div>
+  <div>{{ event.eventTickets }}</div>
+  <button (click)="register()">Register Now</button>
+</div>

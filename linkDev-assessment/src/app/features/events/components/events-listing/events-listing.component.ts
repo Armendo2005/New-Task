@@ -1,68 +1,68 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../services/events.service';
-import { Event, EventCategory } from '../../models/event.model';
-import { NgFor } from '@angular/common';
+import { Event, ApiResponse , Category, EventCategoryResponse  } from '../../models/event.model';
+import { NgFor, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-events-listing',
   standalone: true,
-  imports: [NgFor, FormsModule, RouterLink, NgxPaginationModule],
+  imports: [NgFor, FormsModule, RouterLink, NgxPaginationModule, DatePipe],
   templateUrl: './events-listing.component.html',
   styleUrl: './events-listing.component.scss'
 })
-export class EventsListingComponent  implements OnInit {
+export class EventsListingComponent implements OnInit {
   events: Event[] = [];
-  eventCategories: EventCategory[] =[];  
-  selectedCategory: string = '';
-  selectedDate: string = '';
-  page: number = 1;
-  eventsPerPage: number = 6;
-  currentPage: any;
-  totalEvents!: number;
+  filteredEvents: Event[] = [];
+  categories: Category[] = [];
+  p: number = 1;
+  filters = {
+    date: '',
+    category: '',
+    availableTickets: false
+  };
 
-  constructor(private eventsService: EventsService) { }
+  constructor(private eventService: EventsService, private router: Router) { }
 
-  ngOnInit() {
-    this.getEvents();
+  ngOnInit(): void {
+    this.fetchEvents();
+    this.fetchCategories();
   }
 
-  getEvents() {
-    this.eventsService.getEvents( this.page, this.eventsPerPage, this.selectedCategory, this.selectedDate)
-      .subscribe(
-        (data) => {
-          this.events = data.eventList;
-          this.totalEvents = data.totalRecordCount;
-        },
-        (error) => {
-          console.error('Error fetching events:', error);
-        }
-      );
+  fetchEvents(): void {
+    this.eventService.getEvents().subscribe((data: ApiResponse) => {
+      // Debug the data structure
+      console.log('Fetched events:', data);
+
+      // Extract the event list from the response
+      this.events = data.eventList;
+      // Display all events initially
+      this.filteredEvents = [...this.events];
+      this.applyFilters(); // Apply initial filters (if any) like filtering out past events
+    });
   }
 
-   onCategoryChange(category: string) {
-    this.selectedCategory = category;
-    this.page = 1;
-    this.getEvents();
+  fetchCategories(): void {
+    this.eventService.getCategories().subscribe((data: EventCategoryResponse) => {
+      console.log('Fetched categories:', data);
+      this.categories = data.eventCategoryList;
+    });
   }
 
-  onDateChange(date: string) {
-    this.selectedDate = date;
-    this.page = 1;
-    this.getEvents();
+  applyFilters(): void {
+    this.filteredEvents = this.events.filter(event => {
+      return (!this.filters.date || new Date(event.start).toISOString().slice(0, 10) === this.filters.date) &&
+             (!this.filters.category || event.categoryName === this.filters.category) &&
+             (!this.filters.availableTickets || event.eventTickets > 0);
+    });
+    this.filteredEvents.sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
   }
 
-  onPageChange(page: number) {
-    this.page = page;
-    this.getEvents();
+  viewDetails(eventId: number): void {
+    this.router.navigate(['/events', eventId]);
   }
-
-  getTotalPages() {
-    return Math.ceil(this.totalEvents / this.page);
-  }
-
 }

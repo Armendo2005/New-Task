@@ -9,17 +9,19 @@ export const events_routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'events-listing',
+        redirectTo: '/events',
         pathMatch: 'full',
       },
       {
-        path: 'events-listing',
+        path: 'events',
         component: EventsListingComponent
       },
       {
-        path: 'event/:eventId',
+        path: 'events/:id',
         component: EventDetailsComponent
-      }
+      },
+      { path: '**', redirectTo: '/events' } // Wildcard route for handling 404
+
     ]
   }
  

@@ -1,26 +1,25 @@
 <div>
-  <h2>Events</h2>
-  <div class="filters">
-    <label for="category">Category:</label>
-    <select id="category" [(ngModel)]="selectedCategory" (change)="onCategoryChange(selectedCategory)">
-      <option value="">All</option>
-      <option *ngFor="let category of eventCategories" [value]="category.categoryName">{{ category.categoryName }}</option>
-    </select>
-
-    <label for="date">Date:</label>
-    <input type="date" id="date" [(ngModel)]="selectedDate" (change)="onDateChange(selectedDate)">
+  <h1>Upcoming Events</h1>
+  <div>
+    <label>Date: <input type="date" [(ngModel)]="filters.date" (change)="applyFilters()" /></label>
+    <label>Category: 
+      <select [(ngModel)]="filters.category" (change)="applyFilters()">
+        <option value="">All</option>
+        <option *ngFor="let category of categories" [value]="category.categoryName">{{ category.categoryName }}</option>
+      </select>
+    </label>
+    <label><input type="checkbox" [(ngModel)]="filters.availableTickets" (change)="applyFilters()" /> Available Tickets</label>
   </div>
-
-  <div class="event-list">
-    <div class="event-card" *ngFor="let event of events">
-      <img [src]="event.image" [alt]="event.title">
-      <h3><a [routerLink]="['/event-details', event.eventId]">{{ event.title }}</a></h3>
-      <p>{{ event.start }}</p>
-      <p>{{ event.categoryName }}</p>
-      <p>{{ event.description }}</p>
-      <p>{{ event.location }}</p>
-    </div>
-  </div>
-
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  
+  <ul>
+    <li *ngFor="let event of filteredEvents | paginate: { itemsPerPage: 6, currentPage: p }">
+      <a (click)="viewDetails(event.eventId)">{{ event.title }}</a>
+      <div>{{ event.start }}</div>
+      <img [src]="event.image" alt="{{ event.title }}" />
+      <div>{{ event.categoryName }}</div>
+      <div>{{ event.description }}</div>
+      <div>{{ event.location }}</div>
+    </li>
+  </ul>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 </div>

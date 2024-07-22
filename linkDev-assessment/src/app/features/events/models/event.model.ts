@@ -1,10 +1,15 @@
-export interface EventCategory {
-  categoryId: string;
-  categoryName: string;
+export interface EventCategoryResponse {
+  totalRecordCount: number;
+  eventCategoryList: Category[];
+}
+export interface ApiResponse {
+  pageSize: number;
+  eventList: Event[];
+  totalRecordCount: number;
 }
 
 export interface Event {
-  eventId: string;
+  eventId: any;
   title: string;
   start: string;
   end: string;
@@ -12,9 +17,10 @@ export interface Event {
   categoryName: string;
   description: string;
   location: string;
+  eventTickets:number;
 }
 
-export interface EventResponse {
-  totalRecordCount: number;
-  eventList: Event[];
+export interface Category {
+  categoryId: string;
+  categoryName: string;
 }
