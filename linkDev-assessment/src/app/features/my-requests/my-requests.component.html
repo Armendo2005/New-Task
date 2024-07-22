@@ -34,7 +34,7 @@
       <tr *ngFor="let request of filteredRequests | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
         <td>{{ request.requestNumber }}</td>
         <td>{{ getStatusName(request.requestStatus) }}</td>
-        <td>{{ request.requestSubmissionDate | dateOnly}}</td>
+        <td>{{ request.requestSubmissionDate | dateOnly }}</td>
       </tr>
     </tbody>
   </table>
