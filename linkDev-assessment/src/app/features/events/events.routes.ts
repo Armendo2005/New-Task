@@ -9,15 +9,15 @@ export const events_routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'events',
+        redirectTo: 'events-listing',
         pathMatch: 'full',
       },
       {
-        path: 'events',
+        path: 'events-listing',
         component: EventsListingComponent
       },
       {
-        path: 'event/:name',
+        path: 'event/:eventId',
         component: EventDetailsComponent
       }
     ]

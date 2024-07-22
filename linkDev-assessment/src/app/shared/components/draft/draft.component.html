@@ -1,0 +1,16 @@
+<div class="container">
+  <h1>Events Landing</h1>
+  <div class="event-list">
+    <div class="event-card" *ngFor="let event of events | paginate: { itemsPerPage: 6, currentPage: p }">
+      <a [routerLink]="['/event', event.eventId]" class="event-name">{{ event.title }}</a>
+      <p class="event-date">{{ event.start }}</p>
+      <img [src]="event.image" alt="{{ event.title }}" class="event-image">
+      <p class="event-category">{{ event.categoryTypeCode | categoryName }}</p>
+      <p class="event-description">{{ event.description }}</p>
+      <p class="event-location">{{ event.location }}</p>
+    </div>
+  </div>
+  <div class="pagination-container">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+</div>

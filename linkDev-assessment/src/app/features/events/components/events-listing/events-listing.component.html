@@ -1,1 +1,26 @@
-<p>events-listing works!</p>
+<div>
+  <h2>Events</h2>
+  <div class="filters">
+    <label for="category">Category:</label>
+    <select id="category" [(ngModel)]="selectedCategory" (change)="onCategoryChange(selectedCategory)">
+      <option value="">All</option>
+      <option *ngFor="let category of eventCategories" [value]="category.categoryName">{{ category.categoryName }}</option>
+    </select>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" [(ngModel)]="selectedDate" (change)="onDateChange(selectedDate)">
+  </div>
+
+  <div class="event-list">
+    <div class="event-card" *ngFor="let event of events">
+      <img [src]="event.image" [alt]="event.title">
+      <h3><a [routerLink]="['/event-details', event.eventId]">{{ event.title }}</a></h3>
+      <p>{{ event.start }}</p>
+      <p>{{ event.categoryName }}</p>
+      <p>{{ event.description }}</p>
+      <p>{{ event.location }}</p>
+    </div>
+  </div>
+
+  <pagination-controls (pageChange)="page = $event"></pagination-controls>
+</div>
