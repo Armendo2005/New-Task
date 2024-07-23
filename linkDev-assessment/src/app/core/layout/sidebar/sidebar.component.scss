@@ -1,15 +1,30 @@
-.sidebar {
-	width: 200px;
-	float: left;
-	ul {
-		list-style-type: none;
-		padding: 0;
-		li {
-			margin-bottom: 10px;
-			a {
-				text-decoration: none;
-				color: #333;
-			}
-		}
-	}
+@use "../../../../assets/sass/variables" as *;
+
+.left-side {
+  width: 100%;
+  height: auto;
+  background: $main-color;
+  display: inline-block;
+  position: sticky;  
+
+  ul {
+    list-style-type: none;
+    padding: 0;   
+    li {      
+      padding: 1.125rem 30px ;
+      &:first-child{
+        padding-top: 45px;
+      }
+      
+      a {
+        text-decoration: none;
+        color: $white;
+        font-size: 1.25rem;
+
+        img{
+          padding-inline-end: 1rem;
+        }
+      }
+    }
+  }
 }

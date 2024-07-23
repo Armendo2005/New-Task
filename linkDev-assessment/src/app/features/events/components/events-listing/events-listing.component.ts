@@ -56,7 +56,7 @@ export class EventsListingComponent implements OnInit {
   applyFilters(): void {
     this.filteredEvents = this.events.filter(event => {
       return (!this.filters.date || new Date(event.start).toISOString().slice(0, 10) === this.filters.date) &&
-             (!this.filters.category || event.categoryName === this.filters.category) &&
+             (!this.filters.category || event.categoryTypeCode === this.filters.category) &&
              (!this.filters.availableTickets || event.eventTickets > 0);
     });
     this.filteredEvents.sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());

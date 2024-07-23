@@ -1,14 +1,22 @@
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+@use ".../../../../../assets/sass/variables" as *;
 
-th, td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-th {
-  background-color: #f2f2f2;
+.container {
+  margin: 2.625rem auto;  
+  .card {
+    padding: 30px;
+    .alert-custom {
+      background-color: $secondry-color;
+      border-radius: 0;
+      border: 0;
+      padding: 20px;
+      form{
+        label{
+          color: $black;
+        }
+        .btn-primary{
+          background-color: $main-color;
+        }
+      }
+    }
+  }
 }

@@ -1,42 +1,76 @@
-<div>
-  <form [formGroup]="filterForm" (ngSubmit)="onFilter()">
-    <label>
-      Request Number:
-      <input formControlName="requestNumber" type="text">
-    </label>
-    <label>
-      Request Status:
-      <select formControlName="requestStatus">        
-        <option *ngFor="let status of statuses" [value]="status.statusName">{{status.statusName}}</option>
-      </select>
-    </label>
-    <label>
-      Submission Date From:
-      <input formControlName="submissionDateFrom" type="date">
-    </label>
-    <label>
-      Submission Date To:
-      <input formControlName="submissionDateTo" type="date">
-    </label>
-    <button type="submit">Filter</button>
-    <button (click)="clearFilter()">Clear Filters</button>
-  </form>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-9">
+      <div class="card">
 
-  <table>
-    <thead>
-      <tr>
-        <th>Request Number</th>
-        <th>Request Status</th>
-        <th>Submission Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let request of filteredRequests | paginate: { itemsPerPage: itemsPerPage, currentPage: p }">
-        <td>{{ request.requestNumber }}</td>
-        <td>{{ getStatusName(request.requestStatus) }}</td>
-        <td>{{ request.requestSubmissionDate | dateOnly }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        <div class="alert alert-light alert-custom">
+          <form [formGroup]="filterForm" (ngSubmit)="onFilter()">
+            <div class="row">
+              <div class="col-sm-4 mb-3">
+
+                <label>
+                  Request Number
+                </label>
+                <input formControlName="requestNumber" type="text" class="form-control" />
+              </div>
+              <div class="col-sm-4 mb-3">
+
+                <label>
+                  Request Status
+                </label>
+                <select formControlName="requestStatus" class="form-control">
+                  <option *ngFor="let status of statuses" [value]="status.statusName">
+                    {{ status.statusName }}
+                  </option>
+                </select>
+              </div>
+              <div class="col-sm-4 mb-3">
+                <label>
+                  Submission Date From
+                </label>
+                <input formControlName="submissionDateFrom" type="date" class="form-control" />
+              </div>
+              <div class="col-sm-4 mb-3">
+
+                <label>
+                  Submission Date To
+                </label>
+                <input formControlName="submissionDateTo" type="date" class="form-control" />
+              </div>
+              <div class="col-sm-2 align-self-center">
+
+                <button class="btn btn-primary" type="submit">Filter</button>                
+              </div>
+              <div class="col-sm-2 align-self-center">
+                <button class="btn btn-light" (click)="clearFilter()">Clear Filters</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Request Number</th>
+              <th>Request Status</th>
+              <th>Submission Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="
+              let request of filteredRequests
+                | paginate : { itemsPerPage: itemsPerPage, currentPage: p }
+            ">
+              <td>{{ request.requestNumber }}</td>
+              <td>{{ getStatusName(request.requestStatus) }}</td>
+              <td>{{ request.requestSubmissionDate | dateOnly }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
 </div>

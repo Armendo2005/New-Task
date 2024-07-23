@@ -1,0 +1,16 @@
+@use "../../../../../assets/sass/variables" as *;
+
+.container{
+  margin: 2.625rem auto;
+
+  .event-details{
+    h1{
+      font-size: 3rem;
+    }
+  }
+  .btn-register{
+    background-color: $main-color;
+    color: $white;
+    border-radius: 30px;
+  }
+}

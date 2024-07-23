@@ -1,0 +1,85 @@
+@use "../../../../assets/sass/variables" as *;
+#Header {  
+  .navbar {
+    background-color: $main-color;
+    padding: 1rem;
+    height: 120px;
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .btn-light{
+      color: $main-color;
+      background-color: $white;
+      border-radius: 15px;
+    }
+    .user-actions{
+      .user-info{
+        display: flex;           
+        span{         
+          align-self: center;  
+          padding-inline-end: 10px;
+          color: $white;
+          small{
+            font-size: 0.875rem;
+          }
+        }
+      }
+      .user-image{        
+        width: 60px;
+        height: 60px;
+        background-color: $white;
+        border-radius: 100px;
+        display: flex;
+        justify-content: center;
+        img{
+          display: flex;
+          align-self: flex-end;
+
+        }
+      }
+    }
+  }
+  .navbar-brand {
+    color: $white;
+    text-decoration: none;
+    font-size: 1.5rem;
+  }
+  .navbar-nav {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    li {
+      margin-left: 1rem;
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+  }
+  .hero-section {
+    background-color: $main-color-dark;
+    // background: url("https://placehold.co/1920x400") no-repeat center
+    //   center/cover;
+    color: $white;
+    text-align: center;
+    padding: 4rem 2rem;
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    
+  }
+}

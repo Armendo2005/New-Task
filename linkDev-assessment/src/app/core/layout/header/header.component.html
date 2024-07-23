@@ -1,25 +1,60 @@
-<header class="header">
-  <div class="container">
-    <div class="logo">
-      <img src="assets/logo.png" alt="Logo">
-    </div>
-    <nav class="navbar">
-      <ul>
-        <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/about">About Us</a></li>
-        <li><a routerLink="/events">Events</a></li>
-        <li><a routerLink="/workspace">Workspace</a></li>
-        <li><a routerLink="/accounts">My Accounts</a></li>
-        <li><a routerLink="/resources">Popular Resources</a></li>
-        <li><a routerLink="/contact">Contact Us</a></li>
-      </ul>
-    </nav>
-    <div class="user-actions">
-      <button class="language-switcher">عربى</button>
-      <div class="user-info">
-        <span>Welcome, Mohamed Zaki</span>
-        <img src="assets/user-icon.png" alt="User Icon">
+<div id="Header">
+
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/">
+        <img src="/assets/img/logo.png" alt="LinkDev-Logo">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/events">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/workspace">Workspace</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" routerLink="#">My Accounts</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="#">Popular Resources</a></li>
+          <li class="nav-item"><a class="nav-link" routerLink="#">Contact Us</a></li>
+          <li>
+            <button class="language-switcher btn btn-light">عربى</button>
+          </li>
+        </ul>
+
+        
+
+        <div class="user-actions">
+          <div class="user-info">
+            <span class="text-end">
+              <small>
+                Welcome,
+              </small> 
+              <br />
+              Mohamed Zaki
+            </span>
+            <div class="user-image">
+              <img src="/assets/img/user.svg" alt="User Icon">
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </nav>
+
+  <header id="home" class="hero-section">
+    <div class="container">
+
+    </div>
+  </header>
+
+</div>

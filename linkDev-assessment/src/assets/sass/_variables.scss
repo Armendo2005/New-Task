@@ -1,0 +1,19 @@
+// Colors
+$main-color: #038896;
+$main-color-dark: #101d1e;
+// $main-color-light: #E6ECFC;
+$secondry-color: #F3F3F3;
+$secondry-color-light: #E5E5E5;
+// $secondr-color-dark: #101828;
+
+$black: #000000;
+$white: #ffffff;
+
+// media query Screens
+$maxMobile: "(max-width:575px)"; // from 0 to max mobile   // xs
+$minSmall: "(min-width:576px)"; // from small to up        // sm
+$maxSmall: "(max-width:767px)"; // from 0 to max small     // sm
+$minMedium: "(min-width:768px)"; // from medium to up        // medium
+$maxMedium: "(max-width:991px)"; // from 0 to max medium        // medium
+$minLarge: "(min-width:992px)"; // from large to up        // large
+$minXlarge: "(min-width:1200px)"; // from xlarge to up        // xl
