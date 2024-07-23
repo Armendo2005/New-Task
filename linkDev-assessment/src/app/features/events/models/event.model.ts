@@ -14,7 +14,7 @@ export interface Event {
   start: string;
   end: string;
   image: string;
-  categoryTypeCode: string;
+  categoryTypeCode: number;
   description: string;
   location: string;
   eventTickets:number;

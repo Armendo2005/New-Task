@@ -3,11 +3,12 @@ import { EventsService } from '../../services/events.service';
 import { Event, ApiResponse , Category, EventCategoryResponse  } from '../../models/event.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgIf } from '@angular/common';
+import { CategoryNamePipe } from "../../../../shared/pipe/CategoryName/category-name.pipe";
 
 @Component({
   selector: 'app-event-details',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, CategoryNamePipe],
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.scss'
 })

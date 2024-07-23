@@ -1,14 +1,43 @@
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
+@use ".../../../../../assets/sass/variables" as *;
 
-th, td {
-  padding: 8px;
-  text-align: left;
-  border: 1px solid #ddd;
-}
+.container {
+  margin: 2.625rem auto;  
+  .card {
+    padding: 30px;
 
-h2 {
-  margin-top: 20px;
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: $main-color;
+    }
+    h2{
+      font-size: 3rem;
+      .title{
+        font-size: 1rem;
+      }
+    }
+
+    .table{
+      > thead {
+        tr{
+          th{
+            font-weight: 400;
+          }
+        }
+      }
+      > tbody {
+
+        tr{          
+          height: 80px;
+          td{
+            background-color: $secondry-color;
+            border-bottom-color: $white;
+            border-bottom-width: .725rem ;
+            vertical-align: middle;
+          }
+        }
+
+      }
+    }
+  }
 }

@@ -16,7 +16,7 @@
       <a (click)="viewDetails(event.eventId)">{{ event.title }}</a>
       <div>{{ event.start }}</div>
       <img [src]="event.image" alt="{{ event.title }}" />
-      <div>{{ event.categoryTypeCode }}</div>
+      <div>{{ event.categoryTypeCode | categoryName }}</div>
       <div>{{ event.description }}</div>
       <div>{{ event.location }}</div>
     </li>

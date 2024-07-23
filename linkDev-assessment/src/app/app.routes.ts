@@ -6,7 +6,7 @@ import { EventDetailsComponent } from './features/events/components/event-detail
 import { WorkspaceComponent } from './features/workspace/workspace.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/workspace', pathMatch: 'full' },
+  { path: '', redirectTo: '/events', pathMatch: 'full' },
   { path: 'events', component: EventsListingComponent },
   { path: 'events/:id', component: EventDetailsComponent }, 
   { path: 'my-requests', component: MyRequestsComponent },

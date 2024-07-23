@@ -1,36 +1,68 @@
-<h1>Workspace Dashboard</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <app-sidebar></app-sidebar>
+    </div>
 
-<div>
-  <h2>Statistics</h2>
-  <p>In Progress Requests: {{ inProgressRequestsCount }}</p>
-  <p>Pending Tasks: {{ pendingTasksCount }}</p>
-</div>
+    <div class="col-md-9">
+      <div class="card">
 
-<div>
-  <h2>Latest Requests</h2>
-  <table *ngIf="latestRequests.length > 0">
-    <thead>
-      <tr>
-        <th>Request Number</th>
-        <th>Request Status</th>
-        <th>Request Submission Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let request of latestRequests">
-        <td>{{ request.requestNumber }}</td>
-        <td>{{ getStatusName(request.requestStatus) }}</td>
-        <td>{{ request.requestSubmissionDate }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <p *ngIf="latestRequests.length === 0">No requests available.</p>
-</div>
+        <h1>Workspace Overview</h1>
 
-<div>
-  <h2>Workspace Menu</h2>
-  <ul>
-    <li><a href="/my-requests">My Requests</a></li>
-    <li><a href="/my-tasks">My Tasks</a></li>
-  </ul>
+        <div class="alert alert-light">
+          <div class="row">
+            <div class="col-6 d-flex gap-3">
+              <img src="/assets/img/surface1.svg" alt="">
+              
+              <h2 class="main-color">
+                {{ inProgressRequestsCount }}
+                <p class="title">In Progress Requests </p>
+              </h2>              
+              
+            </div>
+            <div class="col-6 d-flex gap-3">
+              <img src="/assets/img/homework.svg" alt="">
+              <h2>
+                {{ pendingTasksCount }}
+                <p class="title">Pending Tasks </p>
+              </h2>              
+              
+            </div>
+          </div>        
+          
+          
+        </div>
+
+        <div class="row">
+          <div class="col-6">
+            <h6 class="main-color">Latest Requests</h6>
+          </div>
+          <div class="col-6 text-end">
+            <a routerLink="/my-requests">              
+              See All Requests
+            </a>
+          </div>
+          <table class="table" *ngIf="latestRequests.length > 0">
+            <thead>
+              <tr>
+                <th>Request Number</th>
+                <th>Request Status</th>
+                <th>Request Submission Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let request of latestRequests">
+                <td>{{ request.requestNumber }}</td>
+                <td>{{ getStatusName(request.requestStatus) }}</td>
+                <td>{{ request.requestSubmissionDate }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <p *ngIf="latestRequests.length === 0">No requests available.</p>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
 </div>

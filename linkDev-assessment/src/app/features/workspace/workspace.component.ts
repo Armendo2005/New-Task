@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgFor, NgIf } from '@angular/common';
+import { SidebarComponent } from "../../core/layout/sidebar/sidebar.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-workspace',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgIf, SidebarComponent, RouterLink],
   templateUrl: './workspace.component.html',
   styleUrl: './workspace.component.scss'
 })

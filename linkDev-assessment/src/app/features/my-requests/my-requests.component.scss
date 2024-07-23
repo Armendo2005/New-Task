@@ -18,5 +18,27 @@
         }
       }
     }
+    .table{
+      > thead {
+        tr{
+          th{
+            font-weight: 400;
+          }
+        }
+      }
+      > tbody {
+
+        tr{          
+          height: 80px;
+          td{
+            background-color: $secondry-color;
+            border-bottom-color: $white;
+            border-bottom-width: .725rem ;
+            vertical-align: middle;
+          }
+        }
+
+      }
+    }
   }
 }
