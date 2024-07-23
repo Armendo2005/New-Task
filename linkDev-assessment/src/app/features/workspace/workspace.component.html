@@ -1,1 +1,36 @@
-<p>workspace works!</p>
+<h1>Workspace Dashboard</h1>
+
+<div>
+  <h2>Statistics</h2>
+  <p>In Progress Requests: {{ inProgressRequestsCount }}</p>
+  <p>Pending Tasks: {{ pendingTasksCount }}</p>
+</div>
+
+<div>
+  <h2>Latest Requests</h2>
+  <table *ngIf="latestRequests.length > 0">
+    <thead>
+      <tr>
+        <th>Request Number</th>
+        <th>Request Status</th>
+        <th>Request Submission Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of latestRequests">
+        <td>{{ request.requestNumber }}</td>
+        <td>{{ getStatusName(request.requestStatus) }}</td>
+        <td>{{ request.requestSubmissionDate }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p *ngIf="latestRequests.length === 0">No requests available.</p>
+</div>
+
+<div>
+  <h2>Workspace Menu</h2>
+  <ul>
+    <li><a href="/my-requests">My Requests</a></li>
+    <li><a href="/my-tasks">My Tasks</a></li>
+  </ul>
+</div>
