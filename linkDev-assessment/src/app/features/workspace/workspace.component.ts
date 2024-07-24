@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgFor, NgIf } from '@angular/common';
 import { SidebarComponent } from "../../core/layout/sidebar/sidebar.component";
 import { RouterLink } from '@angular/router';
+import { RequestsService } from '../my-requests/services/requests.service';
 
 @Component({
   selector: 'app-workspace',
@@ -20,7 +21,7 @@ export class WorkspaceComponent  implements OnInit {
   private readonly dashboardUrl = 'https://api.npoint.io/287f15da7aaf2d316683/data';
   private readonly statusUrl = 'https://api.npoint.io/0d1ae6c75a16d8886e30/data/requeststatus';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private requestsService: RequestsService) {}
 
   ngOnInit(): void {
     this.loadDashboardData();
@@ -37,10 +38,10 @@ export class WorkspaceComponent  implements OnInit {
   }
 
   private loadRequestStatus(): void {
-    this.http.get<any>(this.statusUrl).subscribe(data => {
-      this.requestStatus = data;
-      console.log('DATA STATUS:',this.requestStatus);
-    });
+  this.requestsService.getRequestStatuses().subscribe(data => {
+    this.requestStatus = data;
+    console.log(this.requestStatus);
+  });
   }
 
   getStatusName(statusCode: string): string {
