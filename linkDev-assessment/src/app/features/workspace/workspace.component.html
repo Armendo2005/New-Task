@@ -54,7 +54,7 @@
               <tr *ngFor="let request of latestRequests">
                 <td>{{ request.requestNumber }}</td>
                 <td>{{ getStatusName(request.requestStatus) }}</td>
-                <td>{{ request.requestSubmissionDate }}</td>
+                <td>{{ request.requestSubmissionDate | dateOnly }}</td>
               </tr>
             </tbody>
           </table>

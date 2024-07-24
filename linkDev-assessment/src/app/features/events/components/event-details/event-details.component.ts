@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../services/events.service';
-import { Event, ApiResponse , Category, EventCategoryResponse  } from '../../models/event.model';
+import { Event, EventResponse , Category, EventCategoryResponse, EventTicket  } from '../../models/event.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { NgIf } from '@angular/common';
+import { NgIf, NgFor, NgStyle } from '@angular/common';
 import { CategoryNamePipe } from "../../../../shared/pipe/CategoryName/category-name.pipe";
 
 @Component({
   selector: 'app-event-details',
   standalone: true,
-  imports: [NgIf, CategoryNamePipe],
+  imports: [NgIf, NgFor, NgStyle , CategoryNamePipe],
   templateUrl: './event-details.component.html',
   styleUrl: './event-details.component.scss'
 })
 export class EventDetailsComponent implements OnInit {
   event: Event | undefined;
-
+  
   constructor(
     private route: ActivatedRoute,
     private eventService: EventsService,
@@ -26,7 +26,7 @@ export class EventDetailsComponent implements OnInit {
     
     // Ensure eventId is a number or convert it to number
     if (eventId) {
-      this.eventService.getEvents().subscribe((data: ApiResponse) => {
+      this.eventService.getEvents().subscribe((data: EventResponse) => {
         // Find the event in the eventList
         this.event = data.eventList.find(event => event.eventId.toString() === eventId);
       });

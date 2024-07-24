@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ApiResponse, Event, Category, EventCategoryResponse  } from '../models/event.model';
+import { EventResponse, Event, Category, EventCategoryResponse  } from '../models/event.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,8 @@ export class EventsService {
 
   constructor(private http: HttpClient) { }
 
-  getEvents(): Observable<ApiResponse> {
-    return this.http.get<ApiResponse>(this.eventsUrl);
+  getEvents(): Observable<EventResponse> {
+    return this.http.get<EventResponse>(this.eventsUrl);
   }
 
   getCategories(): Observable<EventCategoryResponse> {

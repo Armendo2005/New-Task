@@ -2,9 +2,10 @@ export interface EventCategoryResponse {
   totalRecordCount: number;
   eventCategoryList: Category[];
 }
-export interface ApiResponse {
+export interface EventResponse {
   pageSize: number;
   eventList: Event[];
+  eventTickets: EventTicket[];
   totalRecordCount: number;
 }
 

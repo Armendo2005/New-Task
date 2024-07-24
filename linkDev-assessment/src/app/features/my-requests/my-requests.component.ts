@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestsService } from './services/requests.service';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
-import {NgFor } from '@angular/common';
+import {NgFor, DatePipe  } from '@angular/common';
 import { DateOnlyPipe } from "../../shared/pipe/date-only.pipe";
 import { DateNoTimePipe } from "../../shared/pipe/date-no-time.pipe";
 import { SidebarComponent } from "../../core/layout/sidebar/sidebar.component";
@@ -13,7 +13,8 @@ import { SidebarComponent } from "../../core/layout/sidebar/sidebar.component";
   standalone: true,
   imports: [ReactiveFormsModule, NgxPaginationModule, NgFor, DateOnlyPipe, DateNoTimePipe, SidebarComponent],
   templateUrl: './my-requests.component.html',
-  styleUrl: './my-requests.component.scss'
+  styleUrl: './my-requests.component.scss',
+  providers: [DatePipe] 
 })
 export class MyRequestsComponent  implements OnInit {
   requests: any[] = [];

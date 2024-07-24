@@ -10,6 +10,15 @@
   margin: 2.625rem auto;
 
   .event-details{
+    .badge-custom{
+      border: 1px solid #84BD00;
+      padding: 10px;
+      font-size: 18px;
+      
+    }
+    h5{
+      margin-bottom: 1rem;
+    }
     h1{
       font-size: 3rem;
     }

@@ -7,24 +7,54 @@ import { DatePipe } from '@angular/common';
 })
 export class DateOnlyPipe implements PipeTransform {
 
+
   constructor(private datePipe: DatePipe) {}
 
-  transform(value: any, format: string = 'shortDate'): string | null {
+  transform(value: string): string {
     if (!value) {
-      return null;
+      return 'Invalid date';
     }
 
-    // Parse the date value into a Date object
-    const date = new Date(value);
+    let parsedDate: Date;
 
-    // If the date is invalid, return null
-    if (isNaN(date.getTime())) {
-      return 'Invalid Date';
+    // Handle different input formats by standardizing
+    if (value.includes('/')) {
+      // Format: dd/MM/yyyy
+      const [day, month, year] = value.split(' ')[0].split('/');
+      parsedDate = new Date(Number(year), Number(month) - 1, Number(day));
+    } else if (value.includes('-')) {
+      // ISO format or similar
+      parsedDate = new Date(value);
+    } else {
+      // Attempt to parse as simple Date object string
+      parsedDate = new Date(value);
     }
 
-    // Format the date using Angular's DatePipe
-    return this.datePipe.transform(date, format);
+    if (isNaN(parsedDate.getTime())) {
+      return 'Invalid date';
+    }
+
+    return this.datePipe.transform(parsedDate, 'yyyy-MM-dd') || 'Invalid date';
   }
+
+  // constructor(private datePipe: DatePipe) {}
+
+  // transform(value: any, format: string = 'shortDate'): string | null {
+  //   if (!value) {
+  //     return null;
+  //   }
+
+  //   // Parse the date value into a Date object
+  //   const date = new Date(value);
+
+  //   // If the date is invalid, return 'Invalid Date'
+  //   if (isNaN(date.getTime())) {
+  //     return 'Invalid Date';
+  //   }
+
+  //   // Format the date using Angular's DatePipe
+  //   return this.datePipe.transform(date, format);
+  // }
 
 
   // transform(value: Date | string | null): string {

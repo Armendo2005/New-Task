@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NgFor, NgIf } from '@angular/common';
+import { DatePipe, NgFor, NgIf } from '@angular/common';
 import { SidebarComponent } from "../../core/layout/sidebar/sidebar.component";
 import { RouterLink } from '@angular/router';
 import { RequestsService } from '../my-requests/services/requests.service';
+import { DateOnlyPipe } from "../../shared/pipe/date-only.pipe";
 
 @Component({
   selector: 'app-workspace',
   standalone: true,
-  imports: [NgFor, NgIf, SidebarComponent, RouterLink],
+  imports: [NgFor, NgIf, SidebarComponent, RouterLink, DateOnlyPipe],
   templateUrl: './workspace.component.html',
-  styleUrl: './workspace.component.scss'
+  styleUrl: './workspace.component.scss',
+  providers: [DatePipe] 
 })
 export class WorkspaceComponent  implements OnInit {
   inProgressRequestsCount: number = 0;
