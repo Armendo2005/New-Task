@@ -12,8 +12,8 @@
   .event-details{
     .badge-custom{
       border: 1px solid #84BD00;
-      padding: 10px;
-      font-size: 18px;
+      padding: 0.625rem;
+      font-size: 1.125rem;
       
     }
     h5{
@@ -26,6 +26,6 @@
   .btn-register{
     background-color: $main-color;
     color: $white;
-    border-radius: 30px;
+    border-radius: 1.875rem;
   }
 }

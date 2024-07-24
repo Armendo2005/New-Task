@@ -14,7 +14,7 @@ import { CategoryNamePipe } from "../../../../shared/pipe/CategoryName/category-
 })
 export class EventDetailsComponent implements OnInit {
   event: Event | undefined;
-  
+
   constructor(
     private route: ActivatedRoute,
     private eventService: EventsService,
@@ -29,6 +29,11 @@ export class EventDetailsComponent implements OnInit {
       this.eventService.getEvents().subscribe((data: EventResponse) => {
         // Find the event in the eventList
         this.event = data.eventList.find(event => event.eventId.toString() === eventId);
+        if (!this.event) {
+          console.error(`Event with ID ${eventId} not found.`);
+        }
+      }, error => {
+        console.error('Error fetching events:', error);
       });
     }
   }

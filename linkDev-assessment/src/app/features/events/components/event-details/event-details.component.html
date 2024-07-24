@@ -1,65 +1,79 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8">
-
       <div class="event-details" *ngIf="event">
         <h5>
-          <span class="badge-custom">{{ event.categoryTypeCode | categoryName }}</span>
-          
+          <span class="badge-custom">{{
+            event.categoryTypeCode | categoryName
+          }}</span>
         </h5>
         <h1>{{ event.title }}</h1>
         <div class="row">
           <div class="col-md-4 d-flex">
-            <img src="/assets/img/event-calendar.svg" alt="" class="me-3">
+            <img src="/assets/img/event-calendar.svg" alt="" class="me-3" />
             <div>
               Start Date
               <div class="fw-bolder">
                 {{ event.start }}
               </div>
             </div>
-
           </div>
           <div class="col-md-4 d-flex">
-            <img src="/assets/img/event-calendar.svg" alt="" class="me-3">
+            <img src="/assets/img/event-calendar.svg" alt="" class="me-3" />
             <div>
               End Date
               <div class="fw-bolder">
                 {{ event.end }}
               </div>
             </div>
-
           </div>
           <div class="col-md-4 d-flex">
-            <img src="/assets/img/location.svg" alt="" class="me-3">
+            <img src="/assets/img/location.svg" alt="" class="me-3" />
             <div>
               Event Location
               <div class="fw-bolder">
                 {{ event.location }}
               </div>
             </div>
-            
           </div>
-
         </div>
 
-        <img [src]="event.image" alt="{{ event.title }}" class="img-fluid my-3" />
+        <img
+          [src]="event.image"
+          alt="{{ event.title }}"
+          class="img-fluid my-3"
+        />
 
         <div>{{ event.description }}</div>
-
       </div>
     </div>
     <div class="col-md-4">
-      <div class="d-grid gap-2">
-        <button class="btn btn-register" (click)="register()">Register Now</button>        
+      <div class="d-grid gap-2 mb-3">
+        <button class="btn btn-register" (click)="register()">
+          Register Now
+        </button>
       </div>
-      <!-- <div class="event-tickets"  *ngFor="let event of events">
-        <div *ngFor="let ticket of event?.eventTickets" [ngStyle]="{ 'background-color': ticket.color }">
-          <p>{{ ticket.ticketType }}</p>
-          <p>{{ ticket.remainingTickets }} tickets remaining</p>
-          <p>{{ ticket.ticketPriceAmount }} {{ ticket.currency }}</p>
+      <div class="event-tickets">
+        <div
+          *ngIf="
+            event!.eventTickets && event!.eventTickets.length > 0;
+            else noTickets
+          "
+        >
+          <div
+            *ngFor="let ticket of event?.eventTickets"
+            [ngStyle]="{ 'background-color': ticket.color }"
+          >
+            <p>{{ ticket.ticketType }}</p>
+            <p>{{ ticket.remainingTickets }} tickets remaining</p>
+            <p>{{ ticket.isSoldOut ? "Sold Out" : "" }}</p>
+            <p>{{ ticket.ticketPriceAmount }} {{ ticket.currency }}</p>
+          </div>
         </div>
-      </div> -->
-      
+        <ng-template #noTickets>
+          <p>No tickets available for this event.</p>
+        </ng-template>
+      </div>
     </div>
   </div>
 </div>

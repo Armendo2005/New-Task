@@ -21,4 +21,7 @@ export class EventsService {
   getCategories(): Observable<EventCategoryResponse> {
     return this.http.get<EventCategoryResponse>(this.categoriesUrl);
   }
+  getEventById(eventId: string): Observable<Event> {
+    return this.http.get<Event>(`${this.eventsUrl}/${eventId}`);
+  }
 }
