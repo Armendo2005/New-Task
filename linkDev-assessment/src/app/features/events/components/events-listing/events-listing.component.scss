@@ -1,0 +1,20 @@
+@use "../../../../../assets/sass/variables" as *;
+::ng-deep{
+  body{
+    background-color: $white;  
+  }
+}
+#Events-All{
+  .container{    
+    margin: 2.625rem auto;
+    h1{
+      font-size: 2.125rem;
+    }
+
+    .alert-custom{
+      padding-top: 2.625rem;
+    }
+
+
+  }
+}

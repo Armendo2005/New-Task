@@ -1,5 +1,11 @@
 @use "../../../../../assets/sass/variables" as *;
 
+::ng-deep{
+  body{
+    background-color: $white;  
+  }
+}
+
 .container{
   margin: 2.625rem auto;
 
