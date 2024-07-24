@@ -63,11 +63,20 @@
           <div
             *ngFor="let ticket of event?.eventTickets"
             [ngStyle]="{ 'background-color': ticket.color }"
+            class="tickets-info"
           >
-            <p>{{ ticket.ticketType }}</p>
-            <p>{{ ticket.remainingTickets }} tickets remaining</p>
-            <p>{{ ticket.isSoldOut ? "Sold Out" : "" }}</p>
-            <p>{{ ticket.ticketPriceAmount }} {{ ticket.currency }}</p>
+          <div class="d-flex justify-content-around">
+            <div>
+              <p>{{ ticket.ticketType }}</p>             
+              <p>{{ ticket.ticketPriceAmount }} {{ ticket.currency }}</p>
+            </div>
+            <div>
+              <p>{{ ticket.remainingTickets }} tickets remaining</p>
+              <p>{{ ticket.isSoldOut ? "Sold Out" : "" }}</p>
+            </div>
+            
+          </div>
+            
           </div>
         </div>
         <ng-template #noTickets>
