@@ -4,7 +4,7 @@
 
       <div class="row">
         <div class="col-md-4">
-          <input type="date" [(ngModel)]="filters.date" (change)="applyFilters()" class="form-control" placeholder="By Date" />
+          <input type="date" [(ngModel)]="filters.date" (change)="applyFilters()" class="form-control" pattern="\d{4}-\d{2}-\d{2}" placeholder="By Date" />
         </div>
         <div class="col-md-4">
           <select [(ngModel)]="filters.category" (change)="applyFilters()" class="form-select">
@@ -29,7 +29,7 @@
 
       <div class="col-md-4 my-5" *ngFor="let event of filteredEvents | paginate: { itemsPerPage: 6, currentPage: p }">
         <a (click)="viewDetails(event.eventId)">{{ event.title }}</a>
-        <div>{{ event.start }}</div>
+        <div>{{ event.start | dateOnly }}</div>
         <img [src]="event.image" alt="{{ event.title }}" class="img-fluid" />
         <div class="text-truncate-3">{{ event.description }}</div>
         <div class="row">

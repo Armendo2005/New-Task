@@ -17,10 +17,20 @@ export interface Event {
   categoryTypeCode: number;
   description: string;
   location: string;
-  eventTickets:number;
+  eventTickets: EventTicket[];
 }
 
 export interface Category {
   categoryId: string;
   categoryName: string;
+}
+
+export interface EventTicket {
+  color: string;
+  currency: string;
+  ticketId: string;
+  isSoldOut: boolean;
+  ticketType: string;
+  remainingTickets: number;
+  ticketPriceAmount: number;
 }
