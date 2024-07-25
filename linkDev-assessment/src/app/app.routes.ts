@@ -4,6 +4,8 @@ import { DraftComponent } from './shared/components/draft/draft.component';
 import { EventsListingComponent } from './features/events/components/events-listing/events-listing.component';
 import { EventDetailsComponent } from './features/events/components/event-details/event-details.component';
 import { WorkspaceComponent } from './features/workspace/workspace.component';
+import { EventRegisterComponent } from './features/events/components/event-register/event-register.component';
+import { PageNotFoundComponent } from './core/layout/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/events', pathMatch: 'full' },
@@ -11,6 +13,7 @@ export const routes: Routes = [
   { path: 'events/:id', component: EventDetailsComponent }, 
   { path: 'my-requests', component: MyRequestsComponent },
   { path: 'workspace', component: WorkspaceComponent },
+  { path: 'event-register', component: EventRegisterComponent },
   { path: 'draft', component: DraftComponent },
-
+  { path: '**', component: PageNotFoundComponent },
 ];

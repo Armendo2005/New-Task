@@ -39,10 +39,11 @@ export class EventDetailsComponent implements OnInit {
   }
 
   register(): void {
-    if (this.event && new Date(this.event.end) >= new Date()) {
-      this.router.navigate(['/register', this.event.eventId]);
-    } else {
-      alert('Cannot register for past events.');
-    }
+    this.router.navigate(['/event-register']);
+    // if (this.event && new Date(this.event.end) >= new Date()) {
+    //   this.router.navigate(['/event-register', this.event.eventId]);
+    // } else {
+    //   alert('Cannot register for past events.');
+    // }
   }
 }

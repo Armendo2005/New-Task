@@ -1,0 +1,13 @@
+@use "../../../../assets/sass/variables" as *;
+
+.container{
+  margin: 2.625rem auto;  
+  .card {
+    padding: 1.875rem;
+    text-align: center;
+
+    .border-dashed{
+      border: 1px dashed $main-color;
+    }
+  }
+}

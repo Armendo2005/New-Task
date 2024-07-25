@@ -68,7 +68,11 @@
                 <h5 class="text-center">{{ ticket.remainingTickets }}</h5>                                
                 <p>Remaining Tickets</p>
               </div>
-              <div class="top-cross-ribbon">{{ ticket.isSoldOut ? "Sold Out" : "" }}</div>
+              <div *ngIf="!ticket.isSoldOut == false">
+               <span class="top-cross-ribbon">
+                  {{ ticket.isSoldOut ? "Sold Out" : "" }}
+               </span>
+              </div>
             </div>
           </div>
         </div>
