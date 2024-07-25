@@ -38,11 +38,7 @@
           </div>
         </div>
 
-        <img
-          [src]="event.image"
-          alt="{{ event.title }}"
-          class="img-fluid my-3"
-        />
+        <img [src]="event.image" alt="{{ event.title }}" class="img-fluid my-3" />
 
         <div>{{ event.description }}</div>
       </div>
@@ -54,29 +50,26 @@
         </button>
       </div>
       <div class="event-tickets">
-        <div
-          *ngIf="
-            event!.eventTickets && event!.eventTickets.length > 0;
+        <div *ngIf="
+            event?.eventTickets && event!.eventTickets.length > 0;
             else noTickets
-          "
-        >
-          <div
-            *ngFor="let ticket of event?.eventTickets"
-            [ngStyle]="{ 'background-color': ticket.color }"
-            class="tickets-info"
-          >
-          <div class="d-flex justify-content-around">
-            <div>
-              <p>{{ ticket.ticketType }}</p>             
-              <p>{{ ticket.ticketPriceAmount }} {{ ticket.currency }}</p>
+          ">
+          <div *ngFor="let ticket of event?.eventTickets" [ngStyle]="{ 'background-color': ticket.color }"
+            class="tickets-info">
+            <div class="d-flex justify-content-around">
+              <div class="border-end pe-5">
+                <p>{{ ticket.ticketType }}</p>
+                <h3 class="ticket-price">
+                  {{ ticket.ticketPriceAmount }} 
+                  <span class="currency">{{ ticket.currency }}</span>
+                </h3>
+              </div>
+              <div>
+                <h5 class="text-center">{{ ticket.remainingTickets }}</h5>                                
+                <p>Remaining Tickets</p>
+              </div>
+              <div class="top-cross-ribbon">{{ ticket.isSoldOut ? "Sold Out" : "" }}</div>
             </div>
-            <div>
-              <p>{{ ticket.remainingTickets }} tickets remaining</p>
-              <p>{{ ticket.isSoldOut ? "Sold Out" : "" }}</p>
-            </div>
-            
-          </div>
-            
           </div>
         </div>
         <ng-template #noTickets>

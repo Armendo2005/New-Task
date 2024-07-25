@@ -29,8 +29,36 @@
     border-radius: 1.875rem;
   }
   .event-tickets{
-   .tickets-info{
-    
+   .tickets-info{    
+    border-radius: 3px;
+    position: relative;
+    padding: 40px 25px;	
+    max-width: 400px;		
+    margin: 30px auto;
+    overflow: hidden;
+    color: $white;
+
+    .top-cross-ribbon {
+      background: #E12887;
+      padding: 7px 50px;
+      color: $white;
+      position: absolute;
+      top: 20px;
+      right: -50px;
+      transform: rotate(45deg);
+      box-shadow: 0 0 0 3px #E12887;
+      margin: 5px;
+    }
+    .ticket-price{
+      position: relative;
+      .currency{
+        position: absolute;
+        top: 2px;
+        padding-inline-start: 5px;
+        font-size: 1rem;
+      }
+    }
+
    } 
   }
 }
