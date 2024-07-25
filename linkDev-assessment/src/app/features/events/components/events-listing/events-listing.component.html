@@ -1,49 +1,76 @@
 <div id="Events-All">
   <div class="container">
     <div class="alert alert-light alert-custom">
-
       <div class="row">
         <div class="col-md-4">
-          <input type="date" [(ngModel)]="filters.date" (change)="applyFilters()" class="form-control" placeholder="By Date" />
+          <input
+            type="date"
+            [(ngModel)]="filters.date"
+            (change)="applyFilters()"
+            class="form-control"
+            placeholder="By Date"
+          />
         </div>
         <div class="col-md-4">
-          <select [(ngModel)]="filters.category" (change)="applyFilters()" class="form-select">
+          <select
+            [(ngModel)]="filters.category"
+            (change)="applyFilters()"
+            class="form-select"
+          >
             <option value="">Category</option>
-            <option *ngFor="let category of categories" [value]="category.categoryName">{{ category.categoryName }}
+            <option
+              *ngFor="let category of categories"
+              [value]="category.categoryName"
+            >
+              {{ category.categoryName }}
             </option>
           </select>
         </div>
         <div class="col-md-4">
           <div class="form-check form-switch">
-            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"  [(ngModel)]="filters.availableTickets" (change)="applyFilters()" >
-            <label class="form-check-label" for="flexSwitchCheckDefault">Available Tickets</label>
-          </div>      
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="flexSwitchCheckDefault"
+              [(ngModel)]="filters.availableTickets"
+              (change)="applyFilters()"
+            />
+            <label class="form-check-label" for="flexSwitchCheckDefault"
+              >Available Tickets</label
+            >
+          </div>
         </div>
       </div>
-      
-
-      
     </div>
     <h1 class="main-color font-weight-bold">Events</h1>
     <div class="row">
-
-      <div class="col-md-4 my-5" *ngFor="let event of filteredEvents | paginate: { itemsPerPage: 6, currentPage: p }">
+      <div
+        class="col-md-4 my-5"
+        *ngFor="
+          let event of filteredEvents
+            | paginate : { itemsPerPage: 6, currentPage: p }
+        "
+      >
         <a (click)="viewDetails(event.eventId)">{{ event.title }}</a>
-        <div>{{ event.start | dateOnly }}</div>
+        <div>{{ event.start | dateOnly }}</div>        
         <img [src]="event.image" alt="{{ event.title }}" class="img-fluid" />
-        <div class="text-truncate-3">{{ event.description }}</div>
+        <div class="text-truncate-3 my-3">{{ event.description }}</div>
         <div class="row">
           <div class="col-6">
-            {{ event.categoryTypeCode | categoryName }}
+            <p class="badge bg-secondary-light p-2 text-black">
+              {{ event.categoryTypeCode | categoryName }}
+            </p>
           </div>
           <div class="col-6">
             {{ event.location }}
           </div>
         </div>
       </div>
-
-
     </div>
-    <pagination-controls nextLabel="" previousLabel="" (pageChange)="p = $event"></pagination-controls>
+    <pagination-controls
+      nextLabel=""
+      previousLabel=""
+      (pageChange)="p = $event"
+    ></pagination-controls>
   </div>
 </div>

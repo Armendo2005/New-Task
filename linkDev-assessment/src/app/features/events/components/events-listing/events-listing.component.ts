@@ -7,7 +7,7 @@ import {
   EventCategoryResponse,
   EventTicket,
 } from '../../models/event.model';
-import { NgFor, DatePipe } from '@angular/common';
+import { NgFor, DatePipe, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { Router, RouterLink } from '@angular/router';
@@ -22,6 +22,7 @@ import { parseISO, isValid } from 'date-fns';
   standalone: true,
   imports: [
     NgFor,
+    NgIf,
     FormsModule,
     RouterLink,
     NgxPaginationModule,
