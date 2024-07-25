@@ -8,12 +8,12 @@ import { EventRegisterComponent } from './features/events/components/event-regis
 import { PageNotFoundComponent } from './core/layout/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/events', pathMatch: 'full' },
-  { path: 'events', component: EventsListingComponent },
-  { path: 'events/:id', component: EventDetailsComponent }, 
-  { path: 'my-requests', component: MyRequestsComponent },
-  { path: 'workspace', component: WorkspaceComponent },
-  { path: 'event-register', component: EventRegisterComponent },
+  { path: '', redirectTo: '/events', pathMatch: 'full', data: { breadcrumb: 'Home', title: 'Home' }  },
+  { path: 'events', component: EventsListingComponent, data: { breadcrumb: 'Events', title: 'Events' } },
+  { path: 'events/:id', component: EventDetailsComponent, data: { breadcrumb: 'Event Details', title: 'Event Details' } }, 
+  { path: 'my-requests', component: MyRequestsComponent, data: { breadcrumb: 'Workspace', title: 'Workspace' } },
+  { path: 'workspace', component: WorkspaceComponent, data: { breadcrumb: 'My Requests', title: 'My Requests' } },
+  { path: 'event-register', component: EventRegisterComponent, data: { breadcrumb: 'Request Details', title: 'Event Register' } },
   { path: 'draft', component: DraftComponent },
   { path: '**', component: PageNotFoundComponent },
 ];

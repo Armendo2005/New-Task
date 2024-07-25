@@ -1,0 +1,23 @@
+@use "../../../../assets/sass/variables" as *;
+
+.breadcrumb {
+	padding: 8px 15px;
+	margin-bottom: 20px;
+	list-style: none;	
+	border-radius: 4px;
+}
+.breadcrumb-item {  
+  a{
+    color: $white;
+  }
+	& + .breadcrumb-item {
+    
+		&::before {
+			content: ">";
+      color: $white;
+		}
+	}
+	&.active {
+		color: $white;
+	}
+}

@@ -1,12 +1,18 @@
 <div id="Header">
-
   <nav class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
       <a class="navbar-brand" routerLink="/">
-        <img src="/assets/img/logo.png" alt="LinkDev-Logo">
+        <img src="/assets/img/logo.png" alt="LinkDev-Logo" />
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -23,27 +29,29 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/workspace">Workspace</a>
           </li>
-          <li class="nav-item"><a class="nav-link" routerLink="#">My Accounts</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="#">Popular Resources</a></li>
-          <li class="nav-item"><a class="nav-link" routerLink="#">Contact Us</a></li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">My Accounts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">Popular Resources</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="#">Contact Us</a>
+          </li>
           <li>
             <button class="language-switcher btn btn-light">عربى</button>
           </li>
         </ul>
 
-        
-
         <div class="user-actions">
           <div class="user-info">
             <span class="text-end">
-              <small>
-                Welcome,
-              </small> 
+              <small> Welcome, </small>
               <br />
               Mohamed Zaki
             </span>
             <div class="user-image">
-              <img src="/assets/img/user.svg" alt="User Icon">
+              <img src="/assets/img/user.svg" alt="User Icon" />
             </div>
           </div>
         </div>
@@ -53,8 +61,7 @@
 
   <header id="home" class="hero-section">
     <div class="container">
-
+      <app-breadcrumb></app-breadcrumb>
     </div>
   </header>
-
 </div>

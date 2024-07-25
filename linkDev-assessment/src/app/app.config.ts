@@ -1,5 +1,6 @@
 import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
@@ -11,5 +12,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideClientHydration(),
     provideHttpClient(), provideAnimationsAsync(),
+    Title
   ],
 };

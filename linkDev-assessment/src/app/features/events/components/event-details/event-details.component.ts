@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from '../../services/events.service';
-import { Event, EventResponse , Category, EventCategoryResponse, EventTicket  } from '../../models/event.model';
+import {
+  Event,
+  EventResponse,
+  Category,
+  EventCategoryResponse,
+  EventTicket,
+} from '../../models/event.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgIf, NgFor, NgStyle } from '@angular/common';
-import { CategoryNamePipe } from "../../../../shared/pipe/CategoryName/category-name.pipe";
+import { CategoryNamePipe } from '../../../../shared/pipe/CategoryName/category-name.pipe';
 
 @Component({
   selector: 'app-event-details',
   standalone: true,
-  imports: [NgIf, NgFor, NgStyle , CategoryNamePipe],
+  imports: [NgIf, NgFor, NgStyle, CategoryNamePipe],
   templateUrl: './event-details.component.html',
-  styleUrl: './event-details.component.scss'
+  styleUrl: './event-details.component.scss',
 })
 export class EventDetailsComponent implements OnInit {
   event: Event | undefined;
@@ -19,31 +25,33 @@ export class EventDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private eventService: EventsService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     const eventId = this.route.snapshot.paramMap.get('id');
-    
-    // Ensure eventId is a number or convert it to number
+
     if (eventId) {
-      this.eventService.getEvents().subscribe((data: EventResponse) => {
-        // Find the event in the eventList
-        this.event = data.eventList.find(event => event.eventId.toString() === eventId);
-        if (!this.event) {
-          console.error(`Event with ID ${eventId} not found.`);
+      this.eventService.getEvents().subscribe(
+        (data: EventResponse) => {
+          this.event = data.eventList.find(
+            (event) => event.eventId.toString() === eventId
+          );
+          if (!this.event) {
+            console.error(`Event with ID ${eventId} not found.`);
+          }
+        },
+        (error) => {
+          console.error('Error fetching events:', error);
         }
-      }, error => {
-        console.error('Error fetching events:', error);
-      });
+      );
     }
   }
 
   register(): void {
-    this.router.navigate(['/event-register']);
-    // if (this.event && new Date(this.event.end) >= new Date()) {
-    //   this.router.navigate(['/event-register', this.event.eventId]);
-    // } else {
-    //   alert('Cannot register for past events.');
-    // }
+    if (this.event && new Date(this.event.end) >= new Date()) {
+      this.router.navigate(['/event-register', this.event.eventId]);
+    } else {
+      alert('Cannot register for past events.');
+    }
   }
 }

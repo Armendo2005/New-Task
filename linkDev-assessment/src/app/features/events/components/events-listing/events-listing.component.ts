@@ -31,7 +31,7 @@ import { parseISO, isValid } from 'date-fns';
   ],
   templateUrl: './events-listing.component.html',
   styleUrl: './events-listing.component.scss',
-  providers: [DatePipe] 
+  providers: [DatePipe],
 })
 export class EventsListingComponent implements OnInit {
   events: Event[] = [];
@@ -53,13 +53,10 @@ export class EventsListingComponent implements OnInit {
 
   fetchEvents(): void {
     this.eventService.getEvents().subscribe((data: EventResponse) => {
-      // Debug the data structure
       console.log('Fetched events:', data);
-      // Extract the event list from the response
       this.events = data.eventList;
-      // Display all events initially
       this.filteredEvents = [...this.events];
-      this.applyFilters(); // Apply initial filters (if any) like filtering out past events
+      this.applyFilters();
     });
   }
 
@@ -96,11 +93,9 @@ export class EventsListingComponent implements OnInit {
       const dateB = new Date(b.start).getTime();
       console.log(`Comparing ${a.title} (${dateA}) with ${b.title} (${dateB})`);
       return dateA - dateB;
-      
     });
 
     console.log('Sorted filtered events:', this.filteredEvents);
-    
   }
 
   viewDetails(eventId: number): void {
