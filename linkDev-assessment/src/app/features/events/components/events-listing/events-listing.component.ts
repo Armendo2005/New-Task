@@ -16,6 +16,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CategoryNamePipe } from '../../../../shared/pipe/CategoryName/category-name.pipe';
 import { DateOnlyPipe } from '../../../../shared/pipe/date-only.pipe';
 import { parseISO, isValid } from 'date-fns';
+import { DateFormatPipe } from "../../../../shared/pipe/dateFormat/date-format.pipe";
 
 @Component({
   selector: 'app-events-listing',
@@ -29,7 +30,8 @@ import { parseISO, isValid } from 'date-fns';
     DatePipe,
     CategoryNamePipe,
     DateOnlyPipe,
-  ],
+    DateFormatPipe
+],
   templateUrl: './events-listing.component.html',
   styleUrl: './events-listing.component.scss',
   providers: [DatePipe],
@@ -69,6 +71,7 @@ export class EventsListingComponent implements OnInit {
         this.categories = data.eventCategoryList || [];
       });
   }
+
 
   applyFilters(): void {
     this.filteredEvents = this.events.filter((event) => {

@@ -51,8 +51,14 @@
             | paginate : { itemsPerPage: 6, currentPage: p }
         "
       >
-        <a (click)="viewDetails(event.eventId)">{{ event.title }}</a>
-        <div>{{ event.start | dateOnly }}</div>        
+      <div class="d-flex">
+        <div class="pe-4">{{ event.start | dateFormat }}</div>
+        <div>
+          <a (click)="viewDetails(event.eventId)">{{ event.title }}</a>
+        </div>
+      </div>
+        
+        
         <img [src]="event.image" alt="{{ event.title }}" class="img-fluid" />
         <div class="text-truncate-3 my-3">{{ event.description }}</div>
         <div class="row">
